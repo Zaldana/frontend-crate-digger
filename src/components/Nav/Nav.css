@@ -1,0 +1,15 @@
+.navbar {
+    height: 40px;
+    width: 100%;
+    background: radial-gradient(circle, rgba(32,53,62,1) 0%, rgba(0,0,0,1) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

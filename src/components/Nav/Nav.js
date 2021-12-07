@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Nav.css'
 
 function Nav({ user, setUser }) {
 
@@ -19,38 +20,23 @@ function Nav({ user, setUser }) {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark" style={styles.nav}>
-            <div className="container-fluid">
-                <Link className="navbar-brand" to={homeLink}>
-                    Home
+        <nav className="navbar">
+            <div className="home-link-container">
+                <Link to={homeLink}>Home</Link>
+            </div>
+            <div>        
+                <Link to={link2}>
+                    {linkTitle2}
                 </Link>
-                <div className="navbar-expand" id="navbarNav">
-                    <ul className="navbar-nav d-flex flex-row ">
-                        <li className="nav-item">
-                            <Link to={link2} className="nav-link">
-                                {linkTitle2}
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={link3}
-                                className="nav-link"
-                                onClick={() => logoutButton()}
-                            >
-                                {linkTitle3}
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
+                     
+                <Link to={link3}
+                    onClick={() => logoutButton()}
+                >
+                    {linkTitle3}
+                </Link>
             </div>
         </nav>
     );
 }
 
 export default Nav;
-
-const styles = {
-
-    nav: {
-        background: "linear-gradient(90deg, rgba(10,100,122,1) 0%, rgba(28,38,145,1) 50%, rgba(10,100,122,1) 100%)"
-    },
-}
