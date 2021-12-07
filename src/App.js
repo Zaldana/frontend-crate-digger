@@ -1,23 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
+
 import Home from "./components/Home/Home";
 import Nav from "./components/Nav/Nav";
 import Signin from "./components/signin/Signin";
 import Signup from "./components/signup/Signup";
 
-import ProtectedHome from "./components/protectedHome/ProtectedHome";
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import ProtectedHome from "./components/protectedHome/protectedHome";
+import PrivateRoute from "./components/privateRoute/privateRoute";
 
 import addToCollection from "./components/protectedHome/addToCollection/addToCollection"
 import userCollection from "./components/protectedHome/userCollection/userCollection"
 import userDetails from "./components/protectedHome/userDetails/userDetails"
 
-import { AuthContext } from "./context/AuthContext";
-
-import "./App.css";
-import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { dispatch } = useContext(AuthContext);
@@ -67,32 +65,9 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/protected-movie-detail/:moveiId"
-            element={
-              <PrivateRoute>
-                <MovieDetail />
-              </PrivateRoute>
-            }
-          />
 
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/protected/favorite-movies"
-            element={
-              <PrivateRoute>
-                <Favorites />
-              </PrivateRoute>
-            }
-          />
           <Route path="/" element={<Home />} />
+
         </Routes>
       </Router>
     </>
