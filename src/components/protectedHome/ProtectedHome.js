@@ -1,6 +1,6 @@
 import React from 'react'
 
-function protectedHome() {
+function ProtectedHome() {
     return (
         <div>
             This is the protected home
@@ -8,4 +8,4 @@ function protectedHome() {
     )
 }
 
-export default protectedHome
+export default ProtectedHome

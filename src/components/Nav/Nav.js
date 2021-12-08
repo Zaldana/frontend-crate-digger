@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext"
 import './Nav.css'
 
-function Nav({ user, setUser }) {
+function Nav() {
 
-    const { state: user, dispatch } = useContext(AuthContext);
+    const {
+        state: { user },
+        dispatch
+    } = useContext(AuthContext);
 
     let homeLink = user ? "/protected-home" : "/";
 
@@ -17,14 +20,12 @@ function Nav({ user, setUser }) {
 
     let logoutButton = user ? logout : () => { };
 
-
-    let logoutButton = user ? logout : () => { };
-
     function logout() {
-        //setUser(null);
+    
         dispatch({
             type: "LOGOUT",
         });
+
         window.localStorage.removeItem("jwtToken");
     }
 

@@ -15,7 +15,6 @@ function reducer(state, action) {
                 user: {
                     email: action.email,
                     isAuth: true,
-                    username: action.username,
                 },
             };
         
@@ -30,8 +29,11 @@ function reducer(state, action) {
 }
 
 function AuthContextComponent({ children }) {
+
     const [state, dispatch] = useReducer(reducer, initialState);
+
     return (
+        
         <AuthContext.Provider value={{ state, dispatch }}>
             {children}
         </AuthContext.Provider>

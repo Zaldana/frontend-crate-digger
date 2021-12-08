@@ -3,14 +3,13 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import AxiosBackend from "../../lib/axios/AxiosBackend";
 import { toast } from "react-toastify";
-import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import FirstNameHook from "../../hooks/FirstNameHook";
 import LastNameHook from "../../hooks/LastNameHook";
 import UsernameHook from "../../hooks/UsernameHook";
 import PasswordHook from "../../hooks/PasswordHook";
 import EmailHook from "../../hooks/EmailHook";
-import CheckToken from "../../hooks/CheckTokenHook";
+import CheckTokenHook from "../../hooks/CheckTokenHook";
 import "./Signup.css";
 
 function Signup() {
@@ -25,8 +24,8 @@ function Signup() {
         lastName,
         handleLastNameOnChange,
         lastNameError,
-        setOnFocus,
-        setOnBlur,
+        setLastNameOnFocus,
+        setLastNameOnBlur,
     ] = LastNameHook();
 
     const [
@@ -55,7 +54,7 @@ function Signup() {
 
     const navigate = useNavigate();
     
-    const { checkJwtToken } = CheckToken();
+    const { checkJwtToken } = CheckTokenHook();
     
     useEffect(() => {
         if (checkJwtToken()) {
@@ -113,11 +112,9 @@ function Signup() {
                             type="text"      
                             id="firstName"
                             placeholder="First Name"
-
+                            onChange={handleFirstNameOnChange}
                         />
-                        {/* error div */}
-                        <div></div>
-                        
+                        <div>{firstNameError && firstNameError}</div>
                     </div>
 
                     <div>
@@ -127,11 +124,11 @@ function Signup() {
                             type="text"
                             id="lastName"
                             placeholder="last name"
-
+                            onFocus={() => setLastNameOnFocus(true)}
+                            onBlur={() => setLastNameOnBlur(true)}
+                            onChange={handleLastNameOnChange}
                         />
-                        {/* error div */}
-                        <div></div>
-                   
+                        <div>{lastNameError && lastNameError}</div>
                     </div>
 
                     <div>
@@ -141,11 +138,11 @@ function Signup() {
                             type="text"
                             id="username"
                             placeholder="username"
-
+                            onFocus={() => setUsernameOnFocus(true)}
+                            onBlur={() => setUsernameOnBlur(true)}
+                            onChange={handleUsernameOnChange}
                         />
-                        {/* error div */}
-                        <div></div>
-                        
+                        <div>{usernameError && usernameError}</div>
                     </div>
 
                     <div>
@@ -155,10 +152,11 @@ function Signup() {
                             type="email"
                             id="email"
                             placeholder="name@example.com"
-
+                            onChange={handleEmailOnChange}
+                            onFocus={() => setEmailOnFocus(true)}
+                            onBlur={() => setEmailOnBlur(true)}
                         />
-                        <div></div>
-                       
+                        <div>{emailError && emailError}</div>
                     </div>
 
                     <div>
@@ -168,10 +166,11 @@ function Signup() {
                             type="password"
                             id="password"
                             placeholder="Password"
-
+                            onChange={handlePasswordOnChange}
+                            onFocus={() => setPasswordOnFocus(true)}
+                            onBlur={() => setPasswordOnBlur(true)}
                         />
-                        <div></div>
-                        
+                        <div>{passwordError && passwordError}</div>
                     </div>
                     <br/>
                     <button type="submit">
