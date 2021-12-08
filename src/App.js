@@ -49,7 +49,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="App">
       <ToastContainer theme="colored" />
 
       <AuthContextComponent>
@@ -76,7 +76,7 @@ function App() {
         </Routes>
       </Router>
     </AuthContextComponent>
-    </>
+    </div>
   );
 }
 
